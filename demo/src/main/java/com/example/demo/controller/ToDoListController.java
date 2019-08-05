@@ -1,12 +1,40 @@
 package com.example.demo.controller;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
+import java.util.stream.Collectors;
 
-@RestController
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.example.demo.entity.ToDo;
+import com.example.demo.form.ToDoListForm;
+import com.example.demo.repository.ToDoRepository;
+import com.example.demo.service.ToDoService;
+
+/**
+ * ToDoリストコントローラ
+ */
+@Controller
 public class ToDoListController {
-	@RequestMapping("/")
-	public String index() {
-		return "Hello World!";
+	
+	@Autowired
+	ToDoRepository toDoRepository;
+	
+	@Autowired
+	ToDoService toDoService;
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Model model) {
+		List<ToDoListForm> toDoListForm = toDoRepository.findAll()
+											.stream()
+											.map(toDo -> toDoService.convertEntityToForm(toDo))
+											.collect(Collectors.toList());
+		
+		model.addAttribute("toDoListForm", toDoListForm);
+		
+		return "index";
 	}
 }

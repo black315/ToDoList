@@ -1,0 +1,28 @@
+package com.example.demo.form;
+
+import java.util.List;
+
+import com.example.demo.entity.ToDo;
+
+/**
+ * ToDoリストフォーム
+ */
+public class ToDoListForm {
+
+	// ToDoリスト
+	private ToDo toDo;
+
+	/**
+	 * @return the toDo
+	 */
+	public ToDo getToDo() {
+		return toDo;
+	}
+
+	/**
+	 * @param toDo the toDo to set
+	 */
+	public void setToDo(ToDo toDo) {
+		this.toDo = toDo;
+	}
+}

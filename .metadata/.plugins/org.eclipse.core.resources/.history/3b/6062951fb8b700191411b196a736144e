@@ -1,0 +1,12 @@
+package com.example.demo.service;
+
+import org.springframework.boot.devtools.restart.RestartScope;
+import org.springframework.stereotype.Service;
+
+/**
+ * TODOサービス
+ */
+@RestSercice
+public class ToDoService {
+
+}

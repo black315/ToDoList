@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>ToDoリスト</title>
+</head>
+<body>
+    <h3>TODOリスト</h3>
+    <div>
+            <div th:each="todo : ${toDoListForm}">
+                <div class="todo">
+                	<p th:text="${todo.name}"></p>
+                </div>
+            </div>
+        </tbody>
+    </div>
+</body>
+</html>
