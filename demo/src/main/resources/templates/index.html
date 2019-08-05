@@ -6,6 +6,12 @@
 </head>
 	<body>
     	<h3>TODOリスト</h3>
+    	<form method="post" name="create" action="/create" th:object="${createToDoForm}">
+    		<p>新しいToDoを作成する</p>
+    		<p>ToDo名<input type="text" name="name" th:field="*{name}" /></p>
+    		<p>期限<input type="text" name="deadline" th:field="*{deadline}" /></p>
+    		<input type="submit" value="ToDoの追加" />
+    	</form>
     	<div>
             <div th:each="todo : ${toDoListForm}">
                 <div class="todo">

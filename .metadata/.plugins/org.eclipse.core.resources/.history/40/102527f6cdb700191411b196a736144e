@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>ToDoリスト</title>
+</head>
+	<body>
+    	<h3>TODOリスト</h3>
+    	<div>
+    		<p>新しいToDoを作成する</p>
+    		<input type="text" name="name" />
+    		<input type="text" name="deadline" />
+    	</div>
+    	<div>
+            <div th:each="todo : ${toDoListForm}">
+                <div class="todo">
+                	<div th:text="${todo.name}"></div>
+                	<div th:text="${todo.deadline}"></div>
+                	<div th:text="${todo.createdAt}"></div>
+                </div>
+            </div>
+	    </div>
+	</body>
+</html>
