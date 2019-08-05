@@ -1,9 +1,8 @@
 package com.example.demo.form;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
 
-import com.example.demo.entity.ToDo;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * ToDoリストフォーム
@@ -14,10 +13,12 @@ public class ToDoListForm {
 	private String name;
 	
 	// 期限
-	private Date deadline;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate deadline;
 	
 	// 作成日
-	private Date createdAt;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate createdAt;
 	
 	// 完了
 	private boolean isFinished;
@@ -39,28 +40,28 @@ public class ToDoListForm {
 	/**
 	 * @return the deadline
 	 */
-	public Date getDeadline() {
+	public LocalDate getDeadline() {
 		return deadline;
 	}
 
 	/**
 	 * @param deadline the deadline to set
 	 */
-	public void setDeadline(Date deadline) {
+	public void setDeadline(LocalDate deadline) {
 		this.deadline = deadline;
 	}
 
 	/**
 	 * @return the createdAt
 	 */
-	public Date getCreatedAt() {
+	public LocalDate getCreatedAt() {
 		return createdAt;
 	}
 
 	/**
 	 * @param createdAt the createdAt to set
 	 */
-	public void setCreatedAt(Date createdAt) {
+	public void setCreatedAt(LocalDate createdAt) {
 		this.createdAt = createdAt;
 	}
 
