@@ -1,0 +1,10 @@
+package com.example.demo.entity;
+
+/**
+ * ToDo
+ */
+@Entity
+@Table(name = "todo")
+public class ToDo {
+
+}

@@ -1,0 +1,14 @@
+package com.example.demo.form;
+
+import java.util.List;
+
+import com.example.demo.entity.ToDo;
+
+/**
+ * ToDoリストフォーム
+ */
+public class ToDoListForm {
+
+	// ToDoリスト
+	private ToDo toDo;
+}

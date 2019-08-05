@@ -1,0 +1,9 @@
+package com.example.demo.form;
+
+/**
+ * ToDoリストフォーム
+ */
+public class ToDoListForm {
+
+	private List<ToDo> toDooList;
+}

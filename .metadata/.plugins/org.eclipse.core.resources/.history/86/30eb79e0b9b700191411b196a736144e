@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>ToDoリスト</title>
+</head>
+<body>
+    <h2>TODOリスト</h2>
+    
+    <hr />
+    
+<!--     <h3>TODOの追加</h3> -->
+<!--     <form method="post" th:action="@{/new}"> -->
+<!--         <input type="text" name="title" /> -->
+<!--         <input type="submit" value="追加" /> -->
+<!--     </form> -->
+    
+    <h3>TODOリスト</h3>
+    <table>        
+        <tbody>
+            <tr th:each="todo : ${toDoListForm}">
+                <td th:text="${todoItem.title}">xxx</td>
+                <td>
+                    <form th:unless="${todoItemForm.done}" method="post" th:action="@{/done}" th:object="${todoItem}">
+                        <input type="hidden" name="id" th:value="*{id}" />
+                        <input type="submit" value="Done" />
+                    </form>
+                    <form th:if="${todoItemForm.done}" method="post" th:action="@{/restore}" th:object="${todoItem}">
+                        <input type="hidden" name="id" th:value="*{id}" />
+                        <input type="submit" value="Restore" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
