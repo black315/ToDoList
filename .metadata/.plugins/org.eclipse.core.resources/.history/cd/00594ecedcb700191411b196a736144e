@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>ToDoリスト</title>
+</head>
+	<body>
+    	<h3>TODOリスト</h3>
+    	<form method="post" name="create" action="/create" th:object="${createToDoForm}">
+    		<p>新しいToDoを作成する</p>
+    		<p>ToDo名<input type="text" name="name" th:field="*{name}" /></p>
+    		<p>期限<input type="text" name="deadline" th:field="*{deadline}" /></p>
+    		<input type="submit" value="ToDoの追加" />
+    	</form>
+    	<div>
+            <div th:each="todo : ${toDoListForm}">
+                <div class="todo">
+                	<div th:text="${todo.name}"></div>
+                	<div th:text="${todo.deadline}"></div>
+                	<div th:text="${todo.createdAt}"></div>
+                	<a th:href="/{id}/edit (id=${id})"></a>
+                </div>
+            </div>
+	    </div>
+	</body>
+</html>

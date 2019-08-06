@@ -8,6 +8,9 @@ import org.springframework.format.annotation.DateTimeFormat;
  * ToDoリストフォーム
  */
 public class ToDoListForm {
+	
+	// ID
+	private Long id;
 
 	// ToDo名
 	private String name;
@@ -22,6 +25,20 @@ public class ToDoListForm {
 	
 	// 完了
 	private boolean isFinished;
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	/**
 	 * @return the name

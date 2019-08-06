@@ -18,6 +18,7 @@ public class ToDoService {
 	 */
 	public ToDoListForm convertEntityToForm(ToDo toDo) {
 		ToDoListForm form = new ToDoListForm();
+		form.setId(toDo.getId());
 		form.setName(toDo.getName());
 		form.setDeadline(toDo.getDeadline());
 		form.setCreatedAt(toDo.getCreatedAt());
@@ -32,6 +33,7 @@ public class ToDoService {
 	 */
 	public ToDo convertFormToEntity(ToDoListForm toDoListForm) {
 		ToDo toDo = new ToDo();
+		toDo.setId(toDoListForm.getId());
 		toDo.setName(toDoListForm.getName());
 		toDo.setDeadline(toDoListForm.getDeadline());
 		toDo.setCreatedAt(toDoListForm.getCreatedAt());

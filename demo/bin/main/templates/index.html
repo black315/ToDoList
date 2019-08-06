@@ -18,6 +18,9 @@
                 	<div th:text="${todo.name}"></div>
                 	<div th:text="${todo.deadline}"></div>
                 	<div th:text="${todo.createdAt}"></div>
+                	<a th:href="@{/{id}/edit(id=${todo.id})}">
+    					<button type="button">編集</button>
+					</a> 
                 </div>
             </div>
 	    </div>
