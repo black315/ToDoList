@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" class="grey lighten-2">
+<head>
+<meta charset="UTF-8"/>
+<title>ToDoリスト</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+	<body>
+	    <nav>
+    		<div class="nav-wrapper blue">
+      			<a href="/" class="brand-logo center">TODOリスト</a>
+		    </div>
+  		</nav>
+  		<div class="container">
+    		<div class="card">
+    			<div class="card-content">
+    				<form method="post" name="update" action="/update" th:object="${updateToDoForm}">
+		    			<p>ToDoの内容を変更します</p><br>
+	    				<p>ToDo名<input type="text" name="name" th:field="*{name}" th:value="*{name}" /></p><br>
+    					<p>期限<input type="text" name="deadline" th:field="*{deadline}" th:value="*{deadline}" /></p><br>
+	    				<input type="hidden" th:field="*{id}" />
+    					<input type="hidden" th:field="*{createdAt}" />
+	  			  		<input type="hidden" th:field="*{finished}" />
+    					<input type="submit" class="waves-effect waves-light btn blue" value="更新" />
+    					<button id="status" class="waves-effect waves-light btn blue" th:value="*{isFinished} ? '完了' : '未完了'"></button>
+		    		</form>
+		    	</div>
+		    </div>
+		</div>
+	</body>
+</html>
