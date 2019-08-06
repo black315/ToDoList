@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" class="grey lighten-2">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8"/>
 <title>ToDoリスト</title>
@@ -9,7 +9,7 @@
 	<body>
 	    <nav>
     		<div class="nav-wrapper blue">
-      			<a href="/" class="brand-logo center">TODOリスト</a>
+      			<a href="#" class="brand-logo center">TODOリスト</a>
 		    </div>
   		</nav>
   		<div class="container">

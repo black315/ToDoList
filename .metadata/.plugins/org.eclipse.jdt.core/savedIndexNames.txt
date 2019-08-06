@@ -142,7 +142,6 @@ INDEX VERSION 1.131+/Users/ryou/Documents/Programming/teamlab/.metadata/.plugins
 2924237495.index
 3315899237.index
 3818068908.index
-1924484980.index
 3442634905.index
 3705427374.index
 344023262.index

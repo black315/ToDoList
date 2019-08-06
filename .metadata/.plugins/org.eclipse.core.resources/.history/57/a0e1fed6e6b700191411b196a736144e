@@ -9,30 +9,28 @@
 	<body>
     	<nav>
     		<div class="nav-wrapper blue">
-      			<a href="/" class="brand-logo center">TODOリスト</a>
+      			<a href="#" class="brand-logo center">TODOリスト</a>
 		    </div>
   		</nav>
     	<div class="container">
     		<div class="card">
     			<div class="card-content">
 		    		<form method="post" name="create" action="/create" th:object="${createToDoForm}">
-    					<p>新しいToDoを作成する</p><br>
-	    				<p>ToDo名<input type="text" name="name" th:field="*{name}" /></p><br>
-    					<p>期限<input type="text" name="deadline" th:field="*{deadline}" /></p><br>
-	    				<input type="submit" class="waves-effect waves-light btn blue" value="ToDoの追加" />
+    					<p>新しいToDoを作成する</p>
+	    				<p>ToDo名<input type="text" name="name" th:field="*{name}" /></p>
+    					<p>期限<input type="text" name="deadline" th:field="*{deadline}" /></p>
+	    				<input type="submit" class="waves-effect waves-light btn blue white-text" value="ToDoの追加" />
 	    			</form>
 		    	</div>
 	    	</div>
             <div th:each="todo : ${toDoListForm}">
     			<div class="row card">
                 	<div class="card-content">
-                		<div th:text="${todo.name}"></div><br>
-	                	<p>期限</p>
-	                	<div th:text="${todo.deadline}"></div><br>
-	                	<p>作成日</p>
-    	            	<div th:text="${todo.createdAt}"></div><br>
+                		<div th:text="${todo.name}"></div>
+	                	<div th:text="${todo.deadline}"></div>
+    	            	<div th:text="${todo.createdAt}"></div>
         	        	<a th:href="@{/{id}/edit(id=${todo.id})}">
-    						<button type="button" class="waves-effect waves-light btn green">編集</button>
+    						<button type="button" class="waves-effect waves-light btn">編集</button>
 						</a> 
 	                </div>
     	        </div>

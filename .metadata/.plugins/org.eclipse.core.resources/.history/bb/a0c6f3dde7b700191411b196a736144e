@@ -26,11 +26,9 @@
             <div th:each="todo : ${toDoListForm}">
     			<div class="row card">
                 	<div class="card-content">
-                		<div th:text="${todo.name}"></div><br>
-	                	<p>期限</p>
-	                	<div th:text="${todo.deadline}"></div><br>
-	                	<p>作成日</p>
-    	            	<div th:text="${todo.createdAt}"></div><br>
+                		<div th:text="${todo.name}"></div>
+	                	<div th:text="${todo.deadline}"></div>
+    	            	<div th:text="${todo.createdAt}"></div>
         	        	<a th:href="@{/{id}/edit(id=${todo.id})}">
     						<button type="button" class="waves-effect waves-light btn green">編集</button>
 						</a> 

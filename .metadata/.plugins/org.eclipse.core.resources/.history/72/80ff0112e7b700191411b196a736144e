@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>ToDoリスト</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+	<body>
+    	<h3>TODOリスト</h3>
+    	<form method="post" name="update" action="/update" th:object="${updateToDoForm}">
+    		<p>ToDoの内容を変更します</p>
+    		<p>ToDo名<input type="text" name="name" th:field="*{name}" th:value="*{name}" /></p>
+    		<p>期限<input type="text" name="deadline" th:field="*{deadline}" th:value="*{deadline}" /></p>
+    		<input type="hidden" th:field="*{id}" />
+    		<input type="hidden" th:field="*{createdAt}" />
+    		<input type="hidden" th:field="*{finished}" />
+    		<input type="submit" value="更新" />
+    	</form>
+	</body>
+</html>
