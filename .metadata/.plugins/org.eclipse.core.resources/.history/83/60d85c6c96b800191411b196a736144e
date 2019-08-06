@@ -19,7 +19,7 @@
     					<p>新しいToDoを作成する</p><br>
 	    				<p>ToDo名<input type="text" name="name" th:field="*{name}" /></p><br>
     					<p>期限<input type="text" name="deadline" th:field="*{deadline}" /></p><br>
-	    				<input type="submit" class="waves-effect waves-light btn blue" value="ToDoの追加" />
+	    				<input type="submit" class="waves-effect waves-light btn blue" value="ToDoの追加" /?
 	    			</form>
 		    	</div>
 	    	</div>
@@ -36,10 +36,10 @@
 						</a> 
 						<a th:href="@{/{id}/status/change(id=*{id})}">
 							<th:block th:if="*{finished}">
-								<button class="waves-effect waves-light btn blue">完了</button>
+								<button class="waves-effect waves-light btn red">完了</button>
 							</th:block>
 							<th:block th:unless="*{finished}">
-								<button class="waves-effect waves-light btn red">未完了</button>
+								<button class="waves-effect waves-light btn blue">未完了</button>
 							</th:block>
 						</a>
 	                </div>

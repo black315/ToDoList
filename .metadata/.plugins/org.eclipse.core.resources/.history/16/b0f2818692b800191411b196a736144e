@@ -23,24 +23,19 @@
 	    			</form>
 		    	</div>
 	    	</div>
-            <div th:each="todo : ${toDoListForm}" th:object="${todo}">
+            <div th:each="todo : ${toDoListForm}">
     			<div class="row card">
                 	<div class="card-content">
-                		<div th:text="*{name}"></div><br>
+                		<div th:text="${todo.name}"></div><br>
 	                	<p>期限</p>
-	                	<div th:text="*{deadline}"></div><br>
+	                	<div th:text="${todo.deadline}"></div><br>
 	                	<p>作成日</p>
-    	            	<div th:text="*{createdAt}"></div><br>
-        	        	<a th:href="@{/{id}/edit(id=*{id})}">
-    						<button class="waves-effect waves-light btn green">編集</button>
+    	            	<div th:text="${todo.createdAt}"></div><br>
+        	        	<a th:href="@{/{id}/edit(id=${todo.id})}">
+    						<button type="button" class="waves-effect waves-light btn green">編集</button>
 						</a> 
-						<a th:href="@{/{id}/status/change(id=*{id})}">
-							<th:block th:if="*{finished}">
-								<button class="waves-effect waves-light btn blue">完了</button>
-							</th:block>
-							<th:block th:unless="*{finished}">
-								<button class="waves-effect waves-light btn red">未完了</button>
-							</th:block>
+						<a href="/update">
+							<button id="status" class="waves-effect waves-light btn blue" name="isFinished" th:value="*{isFinished} ? '完了' : '未完了'"></button>
 						</a>
 	                </div>
     	        </div>

@@ -67,10 +67,9 @@ public class ToDoListController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "{id}/status/change", method = RequestMethod.GET)
-	public String changeStatus(@PathVariable("id") Long id, @ModelAttribute ToDoListForm toDoListForm) {
-		ToDo toDo = toDoRepository.findById(id).orElseThrow(EntityNotFoundException::new);
-		toDo.setFinished(!toDo.isFinished());
+	@RequestMapping(value = "/status/change", method = RequestMethod.GET)
+	public String changeStatus(@ModelAttribute ToDoListForm toDoListForm) {
+		ToDo toDo = toDoService.convertFormToEntity(toDoListForm);
 		toDoRepository.save(toDo);
 		return "redirect:/";
 	}

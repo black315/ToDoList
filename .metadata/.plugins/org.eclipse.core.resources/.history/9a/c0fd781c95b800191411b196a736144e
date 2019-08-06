@@ -35,11 +35,8 @@
     						<button class="waves-effect waves-light btn green">編集</button>
 						</a> 
 						<a th:href="@{/{id}/status/change(id=*{id})}">
-							<th:block th:if="*{finished}">
-								<button class="waves-effect waves-light btn blue">完了</button>
-							</th:block>
-							<th:block th:unless="*{finished}">
-								<button class="waves-effect waves-light btn red">未完了</button>
+							<th:block th:if="*{isFinished}">
+								<button class="waves-effect waves-light btn red" value="完了"></button>
 							</th:block>
 						</a>
 	                </div>
