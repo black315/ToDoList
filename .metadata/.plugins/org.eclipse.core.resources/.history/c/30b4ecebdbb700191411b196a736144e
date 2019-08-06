@@ -1,0 +1,59 @@
+package com.example.demo.controller;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.example.demo.entity.ToDo;
+import com.example.demo.form.ToDoListForm;
+import com.example.demo.repository.ToDoRepository;
+import com.example.demo.service.ToDoService;
+
+/**
+ * ToDoリストコントローラ
+ */
+@Controller
+public class ToDoListController {
+	
+	@Autowired
+	ToDoRepository toDoRepository;
+	
+	@Autowired
+	ToDoService toDoService;
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String index(Model model) {
+		List<ToDoListForm> toDoListForm = toDoRepository.findAll()
+											.stream()
+											.map(toDo -> toDoService.convertEntityToForm(toDo))
+											.collect(Collectors.toList());
+		
+		model.addAttribute("createToDoForm", new ToDoListForm());
+		model.addAttribute("toDoListForm", toDoListForm);
+		
+		return "index";
+	}
+	
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	public String create(@ModelAttribute ToDoListForm toDoListForm) {
+		ToDo toDo = toDoService.convertFormToEntity(toDoListForm);
+		toDo.setCreatedAt(LocalDate.now());
+		toDoRepository.save(toDo);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "{id}/edit", method = RequestMethod.POST)
+	public String edit(@PathVariable(Long id), Model model) {
+		ToDoListForm toDoListForm = new ToDoListForm();
+		model.addAttribute(toDoListForm);
+		return "edit";
+	}
+}

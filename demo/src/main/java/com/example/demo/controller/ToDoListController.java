@@ -4,10 +4,13 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -45,6 +48,21 @@ public class ToDoListController {
 	public String create(@ModelAttribute ToDoListForm toDoListForm) {
 		ToDo toDo = toDoService.convertFormToEntity(toDoListForm);
 		toDo.setCreatedAt(LocalDate.now());
+		toDoRepository.save(toDo);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+	public String edit(@PathVariable("id") Long id, Model model) {
+		ToDo toDo = toDoRepository.findById(id).orElseThrow(EntityNotFoundException::new);
+		ToDoListForm toDoListForm = toDoService.convertEntityToForm(toDo);
+		model.addAttribute("updateToDoForm", toDoListForm);
+		return "edit";
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String update(@ModelAttribute ToDoListForm toDoListForm) {
+		ToDo toDo = toDoService.convertFormToEntity(toDoListForm);
 		toDoRepository.save(toDo);
 		return "redirect:/";
 	}
